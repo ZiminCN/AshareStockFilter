@@ -11,3 +11,6 @@
 3. `akquant`[git@github.com:akfamily/akquant.git]
 ...
 作为加速筛选以及辅助形工具的手段。
+
+# 逻辑框图
+代码主要由`system`来完成工作。

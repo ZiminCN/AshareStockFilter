@@ -1,3 +1,4 @@
+import unittest
 import akshare as ak
 import pandas as pd
 import time
@@ -82,20 +83,24 @@ def get_limit_up_stocks_with_retry(retry_times=3):
     
     return pd.DataFrame()
 
+class TestAKLib(unittest.TestCase):
+    def test_run(self):
+        print("A股涨停股票筛选器")
+        print("=" * 30)
+        
+        stocks = get_limit_up_stocks_with_retry()
+        
+        if not stocks.empty:
+            print(f"\n✅ 今日涨停股票共 {len(stocks)} 只：")
+            print("=" * 80)
+            print(stocks.to_string(index=False))
+            print("=" * 80)
+        else:
+            print("\n❌ 未能获取到涨停股票数据")
+            print("可能原因：")
+            print("1. 当前是非交易时间（数据不更新）")
+            print("2. 网络连接问题")
+            print("3. 今日确实没有涨停股票") 
+
 if __name__ == "__main__":
-    print("A股涨停股票筛选器")
-    print("=" * 30)
-    
-    stocks = get_limit_up_stocks_with_retry()
-    
-    if not stocks.empty:
-        print(f"\n✅ 今日涨停股票共 {len(stocks)} 只：")
-        print("=" * 80)
-        print(stocks.to_string(index=False))
-        print("=" * 80)
-    else:
-        print("\n❌ 未能获取到涨停股票数据")
-        print("可能原因：")
-        print("1. 当前是非交易时间（数据不更新）")
-        print("2. 网络连接问题")
-        print("3. 今日确实没有涨停股票")
+    unittest.main()
