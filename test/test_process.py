@@ -20,7 +20,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from system.process import Process
-from log.log import Log, Log_Level
+from utils.log import Log, Log_Level
 
 
 class TestProcess(unittest.TestCase):

@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import akshare as ak
 import sys
 import os
 
@@ -21,14 +20,11 @@ from . import input
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from log.log import Log
+from utils.log import Log
 
 
 class Process:
-    def __init__(self, log_handle: Log):
-        self.input = input.Input()
-        self.log_handle = log_handle
-        self.log_handle.log_info("Process init")
-
-    def get_all_A_stocks_info(self):
-        self.all_Astocks_df = ak.stock_zh_a_spot()
+        def __init__(self, log_handle: Log):
+                self.input = input.Input()
+                self.log_handle = log_handle
+                self.log_handle.log_info("Process init")

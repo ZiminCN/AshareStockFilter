@@ -13,26 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import unittest
+import akshare as ak
 import sys
 import os
 
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from utils.log import Log, Log_Level
+from utils.log import Log
 
-
-class TestLog(unittest.TestCase):
-    def test_run(self):
-        log_api = Log(Log_Level.DEBUG)
-        log_api.set_data_persistence(
-            os.path.join(os.path.dirname(__file__), "test_log/test.log")
-        )
-        log_api.log_debug("test debug")
-        log_api.log_info("test info")
-        log_api.log_warn("test warning")
-        log_api.log_error("test error")
-
-
-if __name__ == "__main__":
-    unittest.main()
+class Launch:
+        def __init__(self, log_handle: Log):
+                self.log_handle = log_handle
+                self.log_handle.log_info("Launch initialized")
+                
+        def get_all_A_stocks_info(self):
+                self.log_handle.log_info("获取所有沪深京A股上市公司的实时行情数据")
+                self.all_Astocks_df = ak.stock_zh_a_spot()
