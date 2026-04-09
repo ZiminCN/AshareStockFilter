@@ -13,22 +13,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
-import os
+#!/bin/bash
+current_dir=$(pwd)
 
-from system import process
+if [ -d "$current_dir/output" ]; then
+    rm -rf $current_dir/output
+fi
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+if [ -d "$current_dir/test/test_log" ]; then
+    rm -rf $current_dir/test/test_log
+fi
 
+if [ -d "$current_dir/system/__pycache__" ]; then
+    rm -rf $current_dir/system/__pycache__
+fi
 
-class Main:
-    def __init__(self, input_str):
-        print("Hello World")
-        self.process = process.Process()
+if [ -d "$current_dir/log/__pycache__" ]; then
+    rm -rf $current_dir/log/__pycache__
+fi
 
-    def run(self):
-        pass
+if [ -d "$current_dir/strategy/__pycache__" ]; then
+    rm -rf $current_dir/strategy/__pycache__
+fi
 
-
-if __name__ == "__main__":
-    Main("Hello World")
+if [ -d "$current_dir/filter/__pycache__" ]; then
+    rm -rf $current_dir/filter/__pycache__
+fi

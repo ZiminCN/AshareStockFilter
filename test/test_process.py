@@ -13,22 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import unittest
 import sys
 import os
 
-from system import process
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from system.process import Process
+from log.log import Log, Log_Level
 
 
-class Main:
-    def __init__(self, input_str):
-        print("Hello World")
-        self.process = process.Process()
-
-    def run(self):
-        pass
+class TestProcess(unittest.TestCase):
+    def test_run(self):
+        self.log = Log(Log_Level.DEBUG)
+        self.log.set_data_persistence(
+            os.path.join(os.path.dirname(__file__), "test_log/test_process.log")
+        )
+        self.process_handle = Process(self.log)
 
 
 if __name__ == "__main__":
-    Main("Hello World")
+    unittest.main()
