@@ -4,6 +4,7 @@
 核心指标来源于Z哥提出的相关概念。
 
 主要使用`akshare`[git@github.com:akfamily/akshare.git]作为数据来源
+主要以东方财富的数据源为主。
 
 尝试引入(不分先后)
 1. `Sqeuoia-X`[git@github.com:sngyai/Sequoia-X.git]
