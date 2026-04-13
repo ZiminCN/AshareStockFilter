@@ -28,7 +28,7 @@ class Launch:
                 
         def get_all_Ashare_stocks_info(self):
                 self.log_handle.log_info("获取沪深京A股所有上市公司的实时行情数据")
-                self.all_stocks_df = ak.stock_sh_a_spot_em()
+                self.all_stocks_df = ak.stock_zh_a_spot_em()
                 
         def get_all_Ashare_industry_sector_info(self):
                 self.log_handle.log_info("获取沪深京A股所有板块的成交数据")

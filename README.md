@@ -18,4 +18,5 @@
 # 程序结构
 
 这个程序逻辑如下所示:
+
 <img src="env/pic/AShareStockFilter.drawio.png" width="40%" alt="程序结构图">
