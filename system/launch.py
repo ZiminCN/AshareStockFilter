@@ -16,24 +16,32 @@ import akshare as ak
 import sys
 import os
 
-
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.log import Log
+
+# 清除代理环境变量（防止代理冲突）
+for key in [
+    "http_proxy",
+    "https_proxy",
+    "all_proxy",
+    "HTTP_PROXY",
+    "HTTPS_PROXY",
+    "ALL_PROXY",
+]:
+    os.environ.pop(key, None)
+os.environ["NO_PROXY"] = "*"
+
 
 class Launch:
         def __init__(self, log_handle: Log):
                 self.log_handle = log_handle
                 self.log_handle.log_info("Launch initialized")
                 
-        def get_all_Ashare_stocks_info(self):
-                self.log_handle.log_info("获取沪深京A股所有上市公司的实时行情数据")
-                self.all_stocks_df = ak.stock_zh_a_spot_em()
-                
-        def get_all_Ashare_industry_sector_info(self):
-                self.log_handle.log_info("获取沪深京A股所有板块的成交数据")
-                self.all_sector_df = ak.stock_szse_sector_summary()
-                
+        def get_all_Ashare_realtime_stocks_info(self):
+                self.log_handle.log_info("获取当前沪深京A股所有上市公司的实时行情数据")
+                self.all_stocks_df = ak.stock_zh_a_spot()
+       
         def get_target_stock_info(self, stock_code: str):
                 self.log_handle.log_info(f"获取目标股票 {stock_code} 的实时行情数据")
                 target_stock_info_df = ak.stock_individual_info_em(stock_code)
@@ -43,7 +51,4 @@ class Launch:
                 self.log_handle.log_info(f"获取目标股票 {stock_code} 的市场价格数据")
                 target_stock_market_q = ak.stock_bid_ask_em(stock_code)
                 return target_stock_market_q
-        
-        
-
                 

@@ -11,3 +11,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+import unittest
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from system.launch import Launch
+from utils.log import Log, Log_Level
+
+class TestLaunch(unittest.TestCase):
+    def test_run(self):
+        log_api = Log(Log_Level.DEBUG)
+        launch_api = Launch(log_api)
+        db = launch_api.get_all_Ashare_realtime_stocks_info()
+        print(db)
+
+if __name__ == "__main__":
+    unittest.main()

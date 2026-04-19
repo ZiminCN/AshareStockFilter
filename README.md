@@ -7,6 +7,7 @@
 
 主要使用`akshare`[git@github.com:akfamily/akshare.git]作为数据来源
 主要以东方财富的数据源为主。
+但是由于接口可能不稳定，所以部分接口我完全按照我自己的访问情况做调整。
 
 尝试引入(不分先后)
 1. `Sqeuoia-X`[git@github.com:sngyai/Sequoia-X.git]
@@ -15,8 +16,22 @@
 ...
 作为加速筛选更美股票的工具。
 
+# TODO
+待加入的接口（有些接口有限制）：
+stock_cy_a_spot_em
+stock_kc_a_spot_em
+stock_zh_a_hist
+stock_comment_em
+stock_comment_detail_zlkp_jgcyd_em
+stock_news_em
+stock_news_main_cx
+stock_lhb_detail_em
+stock_lhb_stock_detail_em
+
+
 # 程序结构
 
 这个程序逻辑如下所示:
 
 <img src="env/pic/AShareStockFilter.drawio.png" width="40%" alt="程序结构图">
+  

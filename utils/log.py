@@ -47,8 +47,10 @@ class Log:
         self.log_file = file
 
     def file_write(self, Log_Level, message):
+        if self.log_file is None:
+            return
         if not os.path.exists(self.log_file):
-            pass
+            return
         with open(self.log_file, "a") as f:
             f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}][{Log_Level}]: {message}\n")
 
